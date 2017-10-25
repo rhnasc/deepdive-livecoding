@@ -9,9 +9,16 @@ import (
 )
 
 func Google(query string) (results []search.Result) {
-	results = append(results, search.Web(query))
-	results = append(results, search.Image(query))
-	results = append(results, search.Video(query))
+	resultCh := make(chan search.Result)
+
+	go func() { resultCh <- search.Web(query) }()
+	go func() { resultCh <- search.Image(query) }()
+	go func() { resultCh <- search.Video(query) }()
+
+	for i := 0; i < 3; i++ {
+		results = append(results, <-resultCh)
+	}
+
 	return
 }
 
