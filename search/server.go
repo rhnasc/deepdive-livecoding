@@ -10,6 +10,14 @@ var (
 	Web   = fakeSearch("web")
 	Image = fakeSearch("image")
 	Video = fakeSearch("video")
+
+	Web1   = fakeSearch("web")
+	Image1 = fakeSearch("image")
+	Video1 = fakeSearch("video")
+
+	Web2   = fakeSearch("web")
+	Image2 = fakeSearch("image")
+	Video2 = fakeSearch("video")
 )
 
 type Result string
